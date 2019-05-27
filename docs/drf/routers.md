@@ -126,26 +126,6 @@ class UserViewSet(ModelViewSet):
 
 * URL pattern:  `^users/{pk}/change-password/$` Name:  `'user-change-password'`
 
-如果您不想使用生成的默认名称，则可以使用 url_name 参数对其进行自定义。
-
-例如，如果您想将自定义操作的名称更改为 `'user-change-password'`，则可以编写：
-
-``` python
-from myapp.permissions import IsAdminOrIsSelf
-from rest_framework.decorators import detail_route
-
-class UserViewSet(ModelViewSet):
-    ...
-
-    @detail_route(methods=['post'], permission_classes=[IsAdminOrIsSelf], url_name='change-password')
-    def set_password(self, request, pk=None):
-        ...
-```
-
-上面的例子现在将生成以下URL模式：
-
-* URL pattern:  `^users/{pk}/set_password/$`  Name: `'user-change-password'`
-
 
 可以同时使用 `url_path` 和 `url_name` 参数。
 
